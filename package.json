@@ -1,0 +1,27 @@
+{
+  "name": "discord-file-relay-bot",
+  "version": "1.0.0",
+  "description": "Bot de Reenvío de Archivos de Discord",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node build",
+    "buldev": "npx tsc & node build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "eslint": "^8.54.0",
+    "eslint-config-standard-with-typescript": "^40.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-n": "^16.3.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "discord.js-selfbot-v13": "^2.15.0",
+    "dotenv": "^16.3.1"
+  }
+}

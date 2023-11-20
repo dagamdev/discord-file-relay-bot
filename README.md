@@ -1,0 +1,3 @@
+# Bot de reenvío de archivos de Dsicord
+
+Bot que observa todos los **canales** que pertenecen a ciertas **categorías** dentro de un servidor de **Discord** cuando una persona envía un **mensaje** con archivos visuales *(imagenes, gifs, videos)* dentro de una de los canales a los cuales observa el bot constantemente, toma esos archivos y los envía a un canal con el nombre idéntico al original el cual está situado en otro servidor y pertenece a una categoría similar, en caso de no existir un canal receptor se crear y se envía el contenido.
