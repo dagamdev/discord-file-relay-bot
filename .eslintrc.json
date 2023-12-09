@@ -23,6 +23,7 @@
   },
   "rules": {
     "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/consistent-indexed-object-style": "off"
+    "@typescript-eslint/consistent-indexed-object-style": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
   }
 }
