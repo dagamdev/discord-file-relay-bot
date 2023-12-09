@@ -1,6 +1,6 @@
 {
   "name": "discord-file-relay-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bot de Reenvío de Archivos de Discord",
   "main": "src/index.ts",
   "scripts": {

@@ -18,16 +18,45 @@ FileRelayBot.on('messageCreate', (msg) => {
         if (parentId === null)
             return;
         const categoryId = data_1.CATEGORY_IDS[parentId];
-        if (typeof categoryId === 'string') {
+        if (categoryId !== undefined) {
             const guild = FileRelayBot.guilds.cache.get(GUILD_ID);
             const destinationChannel = guild === null || guild === void 0 ? void 0 : guild.channels.cache.find(c => c.parentId === categoryId && c.name === channel.name);
+            const handleFiles = (channel) => {
+                const messages = [];
+                let message = '';
+                let count = 0;
+                let i = 0;
+                msg.attachments.forEach((at) => {
+                    const file = `[File ${i + 1}](${at.url})`;
+                    const previewMessage = (message.length > 0 ? message + ', ' : '') + file;
+                    if (count < 5 && previewMessage.length < 2000) {
+                        message = previewMessage;
+                        count++;
+                        if (i + 1 === file.length) {
+                            messages.push(message);
+                        }
+                    }
+                    else {
+                        messages.push(message);
+                        message = file;
+                        count = 0;
+                    }
+                    i++;
+                });
+                channel.send({ content });
+                messages.forEach(m => {
+                    setTimeout(() => {
+                        channel.send({ content: m });
+                    }, 2000);
+                });
+            };
             if (destinationChannel === undefined) {
                 guild === null || guild === void 0 ? void 0 : guild.channels.create(channel.name, { nsfw: true, parent: categoryId, type: 'GUILD_TEXT' }).then((ch) => {
-                    ch.send({ content: msg.attachments.size > 0 ? content.concat(`\n\n${msg.attachments.map(at => at.url).map((url, i) => `[File ${i + 1}](${url})`).join(', ')}`) : content });
+                    handleFiles(ch);
                 });
             }
             else if (destinationChannel.type === 'GUILD_TEXT') {
-                destinationChannel.send({ content: msg.attachments.size > 0 ? content.concat(`\n\n${msg.attachments.map(at => at.url).map((url, i) => `[File ${i + 1}](${url})`).join(', ')}`) : content });
+                handleFiles(destinationChannel);
             }
         }
     }
