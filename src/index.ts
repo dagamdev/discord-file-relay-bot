@@ -50,7 +50,7 @@ FileRelayBot.on('messageCreate', (msg) => {
           i++
         })
 
-        channel.send({ content })
+        if (content.length > 0) channel.send({ content })
         messages.forEach(m => {
           setTimeout(() => {
             channel.send({ content: m })
